@@ -144,7 +144,7 @@ Após a criação é hora de usar o comando:
 $ heroku git:clone -a nome-do-seu-arquivoHeroku-criado
 <br>
 
-#### Configurando Heroku com MnngoDB 
+#### Configurando Heroku com MongoDB 
 
 Para que haja a conexão entre os servidoores, precisamos configurar a Heroku via terminal. Basta apenas colocar o comando :
 
