@@ -20,7 +20,17 @@ Após a finalização do comando, surgirão dois arquivos JSON no diretório do 
 
 Acessando seu projeto através de algum editor de código(IDE), edite o arquivo "package.json". Na parte de "scripts" adicione uma nova configuração, isto é, após pôr a vírgula na configuração de "text", coloque a seguinte configuração "start" : node "nome do arquivo-pai do backend do seu projeto"(costuma-se ser o app.js). Com isso, o comando "$ npm start" fará a mesma função do comando nodemon.
 
+Também é necessario  mudança na porta de acesso web. Siga o exemplo abaixo onde configuramos a porta no arquivo <i>app.js</i>, já modificado:
 
+```javascript
+const PORTA = process.env.PORT || 15829
+
+app.listen(PORTA, function(){
+    console.log("O servidor está rolando na url http://localhost:15829!")
+});
+```
+
+Veja que a dupla barra é a chave na escolha da porta. caso seja encontrada alguma porta em algum ambiente de execução, ela será a escolhida, isto é, caso o mesmo esteja sendo executado em alguma outra plataforma-servidor, como a heroku ou qualquer outra, ela será identificada e escolhida. Caso não seja encontrada nenhuma, então, entendemos que será o ambiente de desenvolvimento, isto é, a porta utilizada por sua escolhida na produção do projeto.
 
 ### Conexão com o GIT
 
@@ -134,6 +144,13 @@ Após a criação é hora de usar o comando:
 $ heroku git:clone -a nome-do-seu-arquivoHeroku-criado
 <br>
 
-Após isso é hora de dar o push do projeto para a Heroku, com o comado:
+#### Configurando Heroku com MnngoDB 
+
+Para que haja a conexão entre os servidoores, precisamos configurar a Heroku via terminal. Basta apenas colocar o comando :
+
+$ heroku config:get MONGODB_URI
+<br>
+
+Após isso é hora de dar o push do projeto para a Heroku, com o comando:
 
 $ git push heroku master
